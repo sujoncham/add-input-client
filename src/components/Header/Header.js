@@ -14,7 +14,7 @@ const Header = () => {
                     <Link to='/contact'>Contact</Link>
                 </div>
                 <div className='flex justify-start items-center gap-3'>
-                    <Link to='/inputData'>Signin</Link>
+                    <Link to='/login'>Signin</Link>
                     <Link to='/contact'>Logout</Link>
                 </div>
             </div>

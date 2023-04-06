@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Login from './components/Authentication/Login';
+import Register from './components/Authentication/Register';
+import Category from './components/Category/Category';
 import Header from './components/Header/Header';
 import About from './pages/About';
 import Blog from './pages/Blog';
@@ -21,6 +24,9 @@ const App = () => {
         <Route path='/inputData' element={<InputData />} />
         <Route path='/blog' element={<Blog />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/category' element={<Category />} />
       </Routes>
       {/* <Blog /> */}
       {/* <HigherOrder />
