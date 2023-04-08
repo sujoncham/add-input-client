@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const InputData = () => {
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [open, setOpen] = useState(null)
+   
+    
+    const {id} = useParams()
 
 	const handleImageChange = (event) => {
 		setImage(event.target.files[0]);
@@ -40,46 +44,52 @@ const InputData = () => {
             console.log(err)
         })
     }
+
+    
+
+
     return (
-        <div className='w-96 mx-auto'>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="">Topic Title</label>
-                    <input 
-                        type="text" 
-                        name='title'
-                        value={title}
-                        onChange={handlerTitle}
-                        className='border-2 border-purple-400 p-2 rounded-md w-full'
-                    />
-                </div>
-                <div>
-                    <label htmlFor="">Topic Description</label>
-                    <textarea 
-                        name='description'
-                        value={description}
-                        onChange={handleDescription}
-                        className='border-2 border-purple-400 p-2 rounded-md w-full'
-                        placeholder='write here'></textarea>
-                </div>
-                <div>
-                    {open && <img className={"w-56 h-56" + (image === "" ? "hidden" : "block" )} src={image === "" ? "" : URL.createObjectURL(image)} alt="" />}
-                </div>
-                <div className='py-3'>
-                    <label htmlFor="">Topic Image</label>
-                    <input 
-                        type="file" 
-                        name='image'
-                        onChange={handleImageChange}
-                        className='border-2 border-purple-400 p-2 rounded-md w-full'
-                    />
-                </div>
-                <button
-                    className='border-2 border-purple-400 p-2 rounded-md w-full hover:bg-purple-500' 
-                    type='submit'
-                >create add</button>
-            </form>
-        </div>
+        <div className='container mx-auto flex justify-center items-center gap-10'>
+            <div className='w-[50%] py-10'>
+               <form onSubmit={handleSubmit} >
+                    <div>
+                        <label htmlFor="">Topic Title : {id}</label>
+                        <input 
+                            type="text" 
+                            name='title'
+                            value={title}
+                            onChange={handlerTitle}
+                            className='border-2 border-purple-400 p-2 rounded-md w-full'
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="">Topic Description</label>
+                        <textarea 
+                            name='description'
+                            value={description}
+                            onChange={handleDescription}
+                            className='border-2 border-purple-400 p-2 rounded-md w-full'
+                            placeholder='write here'></textarea>
+                    </div>
+                    <div>
+                        {open && <img className={"w-56 h-56" + (image === "" ? "hidden" : "block" )} src={image === "" ? "" : URL.createObjectURL(image)} alt="" />}
+                    </div>
+                    <div className='py-3'>
+                        <label htmlFor="">Topic Image</label>
+                        <input 
+                            type="file" 
+                            name='image'
+                            onChange={handleImageChange}
+                            className='border-2 border-purple-400 p-2 rounded-md w-full'
+                        />
+                    </div>
+                    <button
+                        className='border-2 border-purple-400 p-2 rounded-md w-full hover:bg-purple-500' 
+                        type='submit'
+                    >create add</button>
+                </form>
+            </div>
+            </div>
     );
 };
 

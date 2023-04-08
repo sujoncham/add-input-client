@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { FaRegHeart } from "react-icons/fa";
 import DetailData from './DetailData';
 // https://www.youtube.com/watch?v=tsCoBd7xSK8
 
@@ -56,11 +57,17 @@ console.log(usersAll)
     })
     ?.map(post=><div key={post._id} className="border-2 border-purple-500 px-2 py-2 rounded-md">
         <img src={url + post?.image} alt="code description" />
-    <h2 className='font-bold'>{post.id}</h2>
-    <h1 className='font-bold'>{post.title}</h1>
-    <h4>{post.description.slice(0, 50)}</h4>
-    <button onClick={()=>handleDelete(post._id)} className='border-2 border-purple-300 px-2 py-1 rounded-md'>del</button>
-    <button onClick={()=>setOpen(post)} className='border-2 border-purple-300 px-2 py-1 rounded-md ml-3'>see detail</button>
+        <div className='h-[150px]'>
+            <h1 className='font-bold text-orange-500 mt-5'>{post.title}</h1>
+            <h4>{post.description.slice(0, 50)} ...<button onClick={()=>setOpen(post)} className='border-none text-purple-600'>see detail</button></h4>
+            
+            
+        </div>
+        <div className='flex justify-between items-center'>
+            <span>5 comments</span>
+            <button onClick={()=>handleDelete(post._id)} className='border-none px-2 py-1 bg-orange-500 rounded-md'>del</button>
+            <span className='flex justify-between items-center'><FaRegHeart className='text-orange-500' size={15} /> 5</span>
+        </div>
 </div>)
 
 if (loading) return <p>Loading...</p>
@@ -80,7 +87,7 @@ if (error) return <p>Error!</p>
                     placeholder='search you title'
                 />
             </div>
-            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5'>
                 {filterTitle}
             </div>
             {open && <DetailData setOpen={setOpen} open={open} />}
