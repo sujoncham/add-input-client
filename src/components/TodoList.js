@@ -41,7 +41,6 @@ const TodoList = () => {
 
     return (
         <div>
-            <h1>Hello</h1>
             <div className='py-10'>
                 <input 
                 type="text" 

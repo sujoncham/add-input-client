@@ -38,7 +38,7 @@ const Blog = () => {
         })
     }, [])
     return (
-        <div>
+        <div className='container mx-auto px-10'>
             <div>
                 <p>{state.error}</p>
             </div>
